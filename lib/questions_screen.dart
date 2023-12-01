@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:adv_basics/answer_button.dart';
+import 'package:adv_basics/data/questions.dart';
 
 class QuestionsScreen extends StatefulWidget {
   const QuestionsScreen({super.key});
 
   @override
-  State<QuestionsScreen> createState() { 
+  State<QuestionsScreen> createState() {
     return _QuestionsScreenState();
   }
 }
@@ -12,39 +14,37 @@ class QuestionsScreen extends StatefulWidget {
 class _QuestionsScreenState extends State<QuestionsScreen> {
   @override
   Widget build(context) {
+    final currentQuestion = questions[0];
+
     return SizedBox(
       width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-        const Text(
-          'The question is . . . ',
-          style: TextStyle(
-            color: Colors.white,
+          Text(
+            currentQuestion.text,
+            style: const TextStyle(
+              color: Colors.white,
+            ),
           ),
-        ),
-        const SizedBox(height: 30,),
-        ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(),
-          child: const Text('Answer 1'),
-        ),
-        ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(),
-          child: const Text('Answer 2'),
-        ),
-        ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(),
-          child: const Text('Answer 3'),
-        ),
-        ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(),
-          child: const Text('Answer 4'),
-        ),
-      ],
+          const SizedBox(height: 30),
+          AnswerButton(
+            answerText: currentQuestion.answers[0],
+            onTap: () {},
+            ),
+          AnswerButton(
+            answerText: currentQuestion.answers[1],
+            onTap: () {},
+            ),
+          AnswerButton(
+            answerText: currentQuestion.answers[2],
+            onTap: () {},
+            ),
+            AnswerButton(
+            answerText: currentQuestion.answers[3],
+            onTap: () {},
+            ),
+        ],
       ),
     );
   }
